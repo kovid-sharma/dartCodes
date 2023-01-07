@@ -24,7 +24,7 @@ void main() {
   final rand = Random(); //rand is an object of Random class which is present in math library
   final minLetters=5;
   final maxLetters=10;//assuming the name has 5 to 10 letters
-
+  final allPerson= <Person>[];
   print('FirstName                LastName                    Date of Birth');
   for (int i=1;i<=1e2;i++) {
     final arr = 'abcdefghijklmnopqrstuvwxyz';  //arr is the array where all the letters are accessed this list by generating random index
@@ -35,11 +35,31 @@ void main() {
 
     final object_person = Person(first,last,dob);   //generate random object of person class
 
-
-    print('${object_person.first}                   ${object_person.last}                    ${object_person.dob.year}-${object_person.dob.month}-${object_person.dob.day}');
+    allPerson.add(object_person);
+    //print('${object_person.first}                   ${object_person.last}                    ${object_person.dob.year}-${object_person.dob.month}-${object_person.dob.day}');
     //space for formatting the output
 
   }
+
+  bubbleSort(allPerson);
+
+}
+void bubbleSort(List<Person> persons) {
+  final n = persons.length;
+  for (int i = 0; i < n - 1; i++) {
+    for (int j = 0; j < n - i - 1; j++) {
+      if (persons[j].dob.isAfter(persons[j + 1].dob)) {
+        final temp = persons[j];
+        persons[j] = persons[j + 1];
+        persons[j + 1] = temp;
+      }
+    }
+  }
+  for(int i=0;i<n;i++)
+    {
+      print('${persons[i].first}     ${persons[i].last}         ${persons[i].dob.hour}-${persons[i].dob.month}-${persons[i].dob.day}');
+
+    }
 }
 
 
