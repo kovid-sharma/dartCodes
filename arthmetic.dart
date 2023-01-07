@@ -25,8 +25,8 @@ void main() {
   final minLetters=5;
   final maxLetters=10;//assuming the name has 5 to 10 letters
   final allPerson= <Person>[];
-  print('FirstName                LastName                    Date of Birth');
-  for (int i=1;i<=1e2;i++) {
+  //print('FirstName                LastName                    Date of Birth');
+  for (int i=1;i<=1e4;i++) {
     final arr = 'abcdefghijklmnopqrstuvwxyz';  //arr is the array where all the letters are accessed this list by generating random index
     final first = randSt(rand,minLetters,maxLetters,arr);
     final last = randSt(rand,minLetters,maxLetters,arr);
@@ -40,9 +40,13 @@ void main() {
     //space for formatting the output
 
   }
+  final timer = Stopwatch();
 
+  timer.start();
   bubbleSort(allPerson);
-
+  bubbleSort(allPerson);
+  timer.stop();
+  print('Time taken: ${timer.elapsedMilliseconds} milliseconds');
 }
 void bubbleSort(List<Person> persons) {
   final n = persons.length;
@@ -55,11 +59,6 @@ void bubbleSort(List<Person> persons) {
       }
     }
   }
-  for(int i=0;i<n;i++)
-    {
-      print('${persons[i].first}     ${persons[i].last}         ${persons[i].dob.hour}-${persons[i].dob.month}-${persons[i].dob.day}');
-
-    }
 }
 
 
